@@ -1,0 +1,103 @@
+grupo I-
+
+n -> nº de nodes
+
+1.
+//Pior caso O(n), melhor caso O(1)
+
+	int index = 0;
+		firstBelow(v, target, index);
+
+}
+
+int firstBelow(int[]v, int target, int index){
+	if(index >= v.length())
+		return -1;
+	else if(target >= v[index])
+		return firstBelow(v, target, ++index);
+	else
+		return index;
+}	
+
+2.
+
+//Melhor caso O(1), Pior case O(n)
+DoubleList<E>(DoubleListNode<E> h){
+	head = h;
+	tail = h;
+	if(h != null)
+		currentSize = 1;
+	else
+		currentSize = 0;
+
+	while(h.next != null){
+		currentSize++;
+		h = h.getNext();
+		tail = h;
+	}
+}
+
+------------ ou ------------------
+	
+	this();
+	if(h != null)
+		head = h;
+	DoubleListNode<E> node = h;
+		while(node != null){
+			tail = node.getNext();
+			currentSize++;
+			node = tail;
+		}
+	}
+
+
+3.
+
+//Pior caso O(n)O(log(n)), Melhor caso O(1)
+int operation(int a, int b){
+	if(b == 1)
+		return a;
+	int result = operation(a+a, b/2);
+	
+	if(b % 2 != 0)
+		result += a;
+	
+	return result;
+}
+
+-------
+n -> b
+
+		o	, n=1
+numCR
+		1+ numCR(n/2)	, n>1
+
+-Recorrência 1:
+		a	, n=0 ou n=1
+T(n)
+		bT(n-1) + c	, n>=1 ou n>=2
+
+		a>=0 ; b>=1 ; c>=1 constantes
+
+	O(n)	, b=1
+T(n)
+	O(b^n)	, b>1
+
+
+-Recorrência 2:
+		a	, n=1
+T(n)
+		b T(n/c) + f(n)	, n>=2
+
+	O(n^k)	, b<c^k
+T(n)	O(n^(k) * logc(n))	, b=c^k
+	O(n^(logc (b)))	, b>c^k
+			
+		*f(n) corresponde ao 1 no sistema acima* / f(n) = O(n^k)
+		a>=0 ; b>=1 ; c>1 constantes ; f(n) = O(n^k) -> k>=0
+		para o k != 0 tem que existir um ciclo dentro da recursividade
+		para o a != 0 "parece que a recursividade não acaba" -> caso especifico (por encontrar)
+		b é a quantidade de chamadas recursivas que são realizadas na operação seguinte
+
+------
+
